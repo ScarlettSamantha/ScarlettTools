@@ -17,5 +17,7 @@ if __name__ == "__main__":
         for i in method_(*args_):
             print(i)
     else:
-        print(method_(*args_))
+        r = method_(*args_)
+        if r is not None:
+            print(r)
 
