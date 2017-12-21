@@ -10,7 +10,7 @@ if __name__ == "__main__":
         os._exit(1)
 
     args_ = ([] if sys.argv.__len__() <= 3 else sys.argv[3:])
-    class_ = getattr(import_module("commands.%s" % sys.argv[1].lower()), sys.argv[1].lower().title())()
+    class_ = getattr(import_module("commands.%s" % sys.argv[1].lower()), sys.argv[1].lower().title())(*args_)
     method_ = getattr(class_, sys.argv[2])
 
     if inspect.isgeneratorfunction(method_):
