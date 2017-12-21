@@ -15,10 +15,13 @@ class Ctn:
     def __init__(self, file: str, output: str=None, delimiter: str=';', decode: bool=True):
         self.output = []
         self.file = os.path.abspath(file)
+        if os.path.exists(self.file) is False:
+            print('Given file %s does not exist' % self.file)
+            exit(1)
         self.in_fp = None
         self.decode = decode
         self.delimiter = delimiter
-        self.out_f = self.DEFAULT_FILE_LOCATION if output is None else output
+        self.out_f = self.DEFAULT_FILE_LOCATION if output is None else os.path.abspath(output)
         self.in_fp = open(file, mode='r')
 
     def parse_file(self) -> None:
