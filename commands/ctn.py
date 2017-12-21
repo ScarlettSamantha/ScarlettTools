@@ -4,6 +4,8 @@ import html
 
 class Ctn:
 
+    DEFAULT_FILE_LOCATION = '/tmp/conversion_output.txt'
+
     @classmethod
     def convert(cls, i_file: str, output: str=None, delimiter: str=';', decode: bool=True):
         c = cls(i_file, output, delimiter, decode)
@@ -16,7 +18,7 @@ class Ctn:
         self.in_fp = None
         self.decode = decode
         self.delimiter = delimiter
-        self.out_f = '/tmp/conversion_output.txt' if output is None else output
+        self.out_f = self.DEFAULT_FILE_LOCATION if output is None else output
         self.in_fp = open(file, mode='r')
 
     def parse_file(self) -> None:
